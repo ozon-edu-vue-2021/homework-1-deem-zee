@@ -16,6 +16,8 @@
         <h2>How much will?</h2>
         <p>{{counter}} + {{step}}</p>
         <p><strong>Result: {{sum}}</strong></p>
+        <p><strong>Multi: {{multi}}</strong></p>
+        <p><strong>Extract: {{extract}}</strong></p>
         <div class="math">
             Counter:
             <button class="button minus" v-on:click="decrementCounterHandler">-1</button>
@@ -23,8 +25,8 @@
         </div>
         <div class="math">
             Step:
-            <button class="button minus">-2</button>
-            <button class="button plus">+2</button>
+            <button class="button minus" v-on:click="decrementStepHandler">-2</button>
+            <button class="button plus" v-on:click="incrementStepHandler">+2</button>
         </div>
     </section>
     <hr>
@@ -52,12 +54,29 @@
                 step: 2
             },
             methods: {
-                incrementCounterHandler() {},
-                decrementCounterHandler() {}
-                //...
+                incrementCounterHandler() {
+                  this.counter += 1;
+                },
+                decrementCounterHandler() {
+                  this.counter -= 1;
+                },
+                incrementStepHandler() {
+                  this.step += 2;
+                },
+                decrementStepHandler() {
+                  this.step -= 2;
             },
+  },
             computed: {
-                sum() {}
+                sum() {
+                  return this.counter + this.step; 
+                },
+                multi() {
+                  return this.counter * this.step;
+                },
+                extract() {
+                  return this.counter - this.step;
+                }
             }
         })
     </script>
